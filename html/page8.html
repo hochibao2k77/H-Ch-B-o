@@ -4,6 +4,7 @@
 		<title> Thiết kế trang giới thiệu sản phẩm</title> 
 		<meta charset = "utf-8">
 		<link rel = "stylesheet" href = "../css/style04.css">
+        <script src="../js/lib.js"></script>
 </head>
 <body>
 
@@ -12,7 +13,7 @@
         </div>
     </div>
 
-<script>
+<script >
 
 //Xác định khung chứa product-list
 const listProducts = document.getElementById("product-list");
@@ -41,7 +42,7 @@ containerInfo.setAttribute("class", "info");
 
 //Tạo <p> chứa tên sản phẩm
 const nameProduct = document.createElement("p");
-nameProduct.innerHTML = "Loại heo ngu nhất ở Việt Nam ";
+nameProduct.innerHTML = "Giống Heo phổ biến ở Việt Nam ";
 
 //Tạo <p> chứa giá sản phẩm
 const price = document.createElement("p");
@@ -50,7 +51,7 @@ price.innerHTML = "110K/1kg";
 //Tạo <p> chứa mô tả sản phẩm
 const description = document.createElement("p");
 description.innerHTML =
-    "Đây là một loại HEO nổi tiếng ở nước và Việt Nam .... thích hợp với điều kiện khí hậu nhiệt đới. Ăn nhìu , làm biến, đặc biệt là thích ngủ";
+    "Đây là một loại HEO nổi tiếng ở nước và Việt Nam .... thích hợp với điều kiện khí hậu nhiệt đới.";
 
 //Tạo <a> chứa liên kết
 const linkProduct = document.createElement("a");
