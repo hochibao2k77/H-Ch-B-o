@@ -1,16 +1,47 @@
 const Products = [
     {
+    nameProduct:"",
+    price:"110/1kg",
+    description:" A liu liu :) ",
+    Image:"../assets/images/bmw.webp",
+    linkProduct:"chi tiet.html"
+    },
+    {
+    nameProduct:"hu",
+    price:"110/1kg",
+    description:"igfutfr",
+    Image:"../assets/images/h2r.jfif",
+    linkProduct:"page 2.html"
+    },
+     {
     nameProduct:"Đây là một giống Heo",
     price:"110/1kg",
-    description:" A liu liu :)) Đây là một loại HEO nói chính xác là bạn thân của tôi ",
-    Image:"../assets/images/liu.jpg",
-    linkProduct:"chi tiet.html"
+    description:"Đây là một loại HEO nổi tiếng ở nước và Việt Nam ",
+    
+    Image:"../assets/images/honda.jpg",
+    linkProduct:"page 2.html"
+   
+
     },
     {
     nameProduct:"Đây là một giống Heo",
     price:"110/1kg",
-    description:"Đây là một loại HEO nổi tiếng ở nước và Việt Nam .... thích hợp với điều kiện khí hậu nhiệt đới",
-    Image:"../assets/images/heoden.gpj.jfif",
+    description:"Đây là một loại HEO nổi tiếng ở nước và Việt Nam ",
+    Image:"../assets/images/cbr650rr.jpg",
+    linkProduct:"page 2.html"
+    },
+    {
+    nameProduct:"Đây là một giống Heo",
+    price:"110/1kg",
+    description:"Đây là một loại HEO nổi tiếng ở nước và Việt Nam ",
+    Image:"../assets/images/zx10r.jpg",
+    linkProduct:"page 2.html"
+    },
+    {
+    nameProduct:"Đây là một giống Heo",
+    price:"110/1kg",
+    description:"Đây là một loại HEO nổi tiếng ở nước và Việt Nam ",
+    Image:"../assets/images/ducati.jpg",
     linkProduct:"page 2.html"
     },
 ];
@@ -44,7 +75,7 @@ containerInfo.setAttribute("class", "info");
 
 //Tạo <p> chứa tên sản phẩm
 const nameProduct = document.createElement("p");
-nameProduct.innerHTML = "Loại heo ngu nhất ở Việt Nam ";
+nameProduct.innerHTML = "Loại heo béo nhất ở Việt Nam ";
 
 //Tạo <p> chứa giá sản phẩm
 const price = document.createElement("p");
@@ -53,7 +84,7 @@ price.innerHTML = ojb.price + "/1kg";
 //Tạo <p> chứa mô tả sản phẩm
 const description = document.createElement("p");
 description.innerHTML =
-    "Đây là một loại HEO nổi tiếng ở nước và Việt Nam .... thích hợp với điều kiện khí hậu nhiệt đới. Ăn nhìu , làm biến, đặc biệt là thích ngủ";
+    "Đây là một loại HEO nổi tiếng ở nước và Việt Nam .... thích hợp với điều kiện khí hậu nhiệt đới.";
 
 //Tạo <a> chứa liên kết
 const linkProduct = document.createElement("a");
