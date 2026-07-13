@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoShow - Giới Thiệu & Bán Xe</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="logo">AutoShow</div>
+      <nav>
+        <a href="../index.html">Trang chủ</a>
+        <a href="san-pham.html">Sản phẩm xe</a>
+        <a href="gioi-thieu.html" class="active">Giới thiệu</a>
+        <a href="lien-he.html">Liên hệ</a>
+      </nav>
+      <button class="btn" id="menuBtn">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div>
+          <p class="badge">Xe mới • Xe cũ • Trả góp</p>
+          <h1>Khám phá chiếc xe phù hợp với bạn</h1>
+          <p>
+            AutoShow cung cấp các mẫu xe đa dạng, từ sedan, SUV đến xe điện,
+            với thông tin rõ ràng và tư vấn nhanh chóng.
+          </p>
+          <a class="btn primary" href="#cars">Xem xe ngay</a>
+        </div>
+        <div class="hero-card">
+          <h3>Ưu điểm nổi bật</h3>
+          <ul>
+            <li>Hàng chính hãng, kiểm định rõ ràng</li>
+            <li>Hỗ trợ trả góp linh hoạt</li>
+            <li>Tư vấn và giao xe tận nơi</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cars">
+      <div class="container">
+        <h2>Xe nổi bật</h2>
+        <div class="filters">
+          <button class="filter active" data-filter="all">Tất cả</button>
+          <button class="filter" data-filter="sedan">Sedan</button>
+          <button class="filter" data-filter="suv">SUV</button>
+          <button class="filter" data-filter="electric">Xe điện</button>
+        </div>
+        <div class="grid" id="carGrid"></div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <div>
+          <h2>Về AutoShow</h2>
+          <p>
+            Chúng tôi xây dựng website giới thiệu và bán xe nhằm giúp khách hàng
+            dễ dàng xem mẫu xe, so sánh giá và liên hệ mua hàng nhanh hơn.
+          </p>
+        </div>
+        <div class="stats">
+          <div><strong>120+</strong><span>Mẫu xe</span></div>
+          <div><strong>98%</strong><span>Hài lòng</span></div>
+          <div><strong>24/7</strong><span>Tư vấn</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+        <h2>Liên hệ tư vấn</h2>
+        <form class="contact-form" id="contactForm">
+          <input type="text" placeholder="Họ và tên" required />
+          <input type="tel" placeholder="Số điện thoại" required />
+          <input type="email" placeholder="Email" required />
+          <textarea placeholder="Bạn muốn mua dòng xe nào?" rows="5"></textarea>
+          <button class="btn primary" type="submit">Gửi yêu cầu</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 AutoShow. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>

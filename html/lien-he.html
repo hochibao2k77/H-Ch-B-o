@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liên hệ | AutoShow</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="logo">AutoShow</div>
+      <nav>
+        <a href="../index.html">Trang chủ</a>
+        <a href="san-pham.html">Sản phẩm xe</a>
+        <a href="gioi-thieu.html">Giới thiệu</a>
+        <a href="lien-he.html" class="active">Liên hệ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contact-page">
+    <section class="contact-hero">
+      <div class="container">
+        <h1>Liên hệ tư vấn mua xe</h1>
+        <p>
+          Gửi thông tin của bạn để được tư vấn dòng xe phù hợp, báo giá nhanh
+          và hỗ trợ lái thử tại showroom.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <h2>Thông tin cửa hàng</h2>
+          <p><strong>Địa chỉ:</strong> 123 Nguyễn Văn Linh, Quận 7, TP. Hồ Chí Minh</p>
+          <p><strong>Hotline:</strong> 0909 123 456</p>
+          <p><strong>Email:</strong> autoshow@gmail.com</p>
+          <p><strong>Giờ làm việc:</strong> 8:00 - 20:00 mỗi ngày</p>
+
+          <div class="map-box">
+            <iframe
+              src="https://www.google.com/maps"
+              width="100%"
+              height="300"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <h2>Gửi yêu cầu</h2>
+          <input type="text" name="fullname" placeholder="Họ và tên" required />
+          <input type="tel" name="phone" placeholder="Số điện thoại" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="text" name="car" placeholder="Dòng xe quan tâm" />
+          <textarea name="message" rows="6" placeholder="Nội dung cần tư vấn"></textarea>
+          <button type="submit" class="btn primary">Gửi liên hệ</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 AutoShow. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>

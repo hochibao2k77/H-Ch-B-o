@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sản Phẩm Xe | AutoShow</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="logo">AutoShow</div>
+      <nav>
+        <a href="../index.html">Trang chủ</a>
+        <a href="san-pham.html" class="active">Sản phẩm xe</a>
+        <a href="gioi-thieu.html">Giới thiệu</a>
+        <a href="lien-he.html">Liên hệ</a>
+      </nav>
+      <button class="btn" id="menuBtn">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="product-section">
+      <div class="container">
+        <h1>Sản phẩm xe</h1>
+
+        <div class="filters">
+          <button class="filter active" data-filter="all">Tất cả</button>
+          <button class="filter" data-filter="sedan">Sedan</button>
+          <button class="filter" data-filter="suv">SUV</button>
+          <button class="filter" data-filter="electric">Xe điện</button>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 AutoShow. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>

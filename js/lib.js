@@ -1,44 +1,44 @@
 const Products = [
     {
-    nameProduct:"",
+    nameProduct:"SUZUKI",
     price:"110/1kg",
-    description:" A liu liu :) ",
+    description:" :) ",
     Image:"../assets/images/bmw.webp",
-    linkProduct:"chi tiet.html"
+    linkProduct:"chitiet.html"
     },
     {
-    nameProduct:"hu",
+    nameProduct:"KAWASAKI NINJA H2R",
     price:"110/1kg",
     description:"igfutfr",
     Image:"../assets/images/h2r.jfif",
-    linkProduct:"page 2.html"
+    linkProduct:"chitiet.html"
     },
      {
-    nameProduct:"Đây là một giống Heo",
+    nameProduct:"HONDA CBR1000RR",
     price:"110/1kg",
-    description:"Đây là một loại HEO nổi tiếng ở nước và Việt Nam ",
-    
+    description:"Đâ ",
+        description1:"ghgghkggc ",
     Image:"../assets/images/honda.jpg",
-    linkProduct:"page 2.html"
+    linkProduct:"chitiet.html"
    
 
     },
     {
-    nameProduct:"Đây là một giống Heo",
+    nameProduct:"HONDA CBR650R",
     price:"110/1kg",
     description:"Đây là một loại HEO nổi tiếng ở nước và Việt Nam ",
     Image:"../assets/images/cbr650rr.jpg",
     linkProduct:"page 2.html"
     },
     {
-    nameProduct:"Đây là một giống Heo",
+    nameProduct:"KAWASAKI ZX10R",
     price:"110/1kg",
     description:"Đây là một loại HEO nổi tiếng ở nước và Việt Nam ",
     Image:"../assets/images/zx10r.jpg",
     linkProduct:"page 2.html"
     },
     {
-    nameProduct:"Đây là một giống Heo",
+    nameProduct:"DUCATI SUPERA V4S",
     price:"110/1kg",
     description:"Đây là một loại HEO nổi tiếng ở nước và Việt Nam ",
     Image:"../assets/images/ducati.jpg",
