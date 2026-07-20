@@ -1,0 +1,9 @@
+/* ===== page5.css ===== */
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+}

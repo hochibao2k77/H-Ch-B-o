@@ -1,0 +1,93 @@
+/* ===== chitiet.css (channa shop) ===== */
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  color: #222;
+}
+
+header {
+  text-align: center;
+  background: linear-gradient(135deg, #06c167, #04a34e);
+  color: #fff;
+  padding: 28px 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0 0 14px;
+  letter-spacing: 1px;
+}
+
+input#search {
+  width: 300px;
+  max-width: 90%;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+#list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 30px 16px;
+}
+
+.product {
+  border: none;
+  background: #fff;
+  padding: 14px;
+  margin: 0;
+  width: 220px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14);
+}
+
+.product img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0 auto 10px;
+}
+
+.product h3 {
+  margin: 6px 0;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+.product p {
+  color: #06a34e;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.product a {
+  display: inline-block;
+  text-decoration: none;
+  background: #06c167;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.product a:hover {
+  background: #04a34e;
+}
