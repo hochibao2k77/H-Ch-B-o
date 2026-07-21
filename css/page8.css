@@ -1,10 +1,12 @@
 /* ===== page8.css ===== */
-* { box-sizing: border-box; }
+* { 
+  box-sizing: border-box; 
+}
 
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
-  background: #f7f8fa;
+  background: #f7f8fa; /* Giữ nguyên nền gốc */
   padding: 40px 0;
 }
 
@@ -19,57 +21,166 @@ body {
   justify-content: center;
 }
 
+/* Thẻ sản phẩm chính */
 .item {
+  position: relative;
   display: flex;
-  gap: 20px;
-  background: #fff;
-  border-radius: 14px;
-  padding: 20px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  gap: 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   max-width: 700px;
+  border: 1px solid #eaeaea;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Hiệu ứng nổi & đổ bóng sâu khi rê chuột */
+.item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Hiệu ứng tia sáng chạy qua (Shimmer) khi hover */
+.item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 0.75s ease;
+  pointer-events: none;
+}
+
+.item:hover::before {
+  left: 125%;
+}
+
+/* Khung hình ảnh */
+.image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  flex-shrink: 0;
 }
 
 .image img {
-  border-radius: 10px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
+.item:hover .image img {
+  transform: scale(1.06); /* Zoom ảnh nhẹ */
+}
+
+/* Trang trí thêm: Thẻ Badge góc ảnh (Nếu muốn dùng) */
+.image::after {
+  content: "HOT";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #d0342c;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Khối thông tin */
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Tiêu đề sản phẩm + Hiệu ứng gạch chân */
 .info p:first-child {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: #1a1a1a;
   margin: 0 0 8px;
+  display: inline-block;
+  transition: color 0.2s ease;
 }
 
+.item:hover .info p:first-child {
+  color: #d0342c; /* Đổi màu tiêu đề khi hover vào card */
+}
+
+/* Giá sản phẩm */
 .info p:nth-child(2) {
   font-weight: 700;
+  font-size: 1.1rem;
   color: #d0342c;
   margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+/* Mô tả sản phẩm */
 .info p:nth-child(3) {
   color: #555;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   line-height: 1.6;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 }
 
+/* Nút Mua ngay / Xem thêm */
 .info a {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   background: #d0342c;
   color: #fff;
-  padding: 8px 18px;
+  padding: 9px 22px;
   border-radius: 999px;
   font-weight: 600;
   font-size: 0.9rem;
-  transition: background 0.2s;
+  box-shadow: 0 4px 12px rgba(208, 52, 44, 0.25);
+  transition: all 0.25s ease;
+  width: fit-content;
 }
 
 .info a:hover {
   background: #a92620;
+  box-shadow: 0 6px 18px rgba(208, 52, 44, 0.4);
+  transform: translateY(-2px);
 }
 
+.info a:active {
+  transform: translateY(0);
+}
+
+/* Responsive trên điện thoại */
 @media (max-width: 600px) {
-  .item { flex-direction: column; }
+  .item { 
+    flex-direction: column; 
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .info a {
+    margin: 0 auto; /* Căn giữa nút trên màn hình nhỏ */
+  }
 }

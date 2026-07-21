@@ -1,17 +1,395 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head> 
-		<title> Thiết kế trang giới thiệu sản phẩm</title> 
-		<meta charset = "utf-8">
-		<link rel = "stylesheet" href = "../css/style.css">
-        <script src="../js/lib.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Mô Tô Phân Khối Lớn</title> 
+    <style>
+        /* ===== CSS TẤT CẢ TRONG MỘT ===== */
+        * { 
+            box-sizing: border-box; 
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #eef2f3 0%, #d9e2ec 100%);
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #1a1a1a;
+            margin-bottom: 35px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 1. KHUNG LƯỚI TÁCH CÁC XE RA RA NHAU */
+        #product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px; /* Tạo khoảng cách 30px giữa các xe */
+            width: 100%;
+        }
+
+        /* 2. THẺ CHỨA MỖI XE (Xếp dọc: Ảnh trên, chữ dưới) */
+        .item {
+            display: flex;
+            flex-direction: column; 
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        /* 3. KHUNG HÌNH ẢNH (NẰM Ở TRÊN) */
+        .image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            flex-shrink: 0;
+            background-color: #f0f0f0;
+        }
+
+        .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        /* 4. KHUNG CHỮ (NẰM Ở DƯỚI ÁNH) */
+        .info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .info p:first-child {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin: 0 0 6px;
+        }
+
+        .info p:nth-child(2) {
+            font-weight: 700;
+            color: #d0342c;
+            font-size: 1rem;
+            margin: 0 0 10px;
+        }
+
+        .info p:nth-child(3) {
+            color: #555;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            margin: 0 0 18px;
+            flex-grow: 1;
+        }
+
+        /* Nút Xem thông số */
+        .btn-detail {
+            background: #d0342c;
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(208, 52, 44, 0.25);
+            transition: background 0.2s, transform 0.2s;
+            width: 100%;
+        }
+
+        .btn-detail:hover {
+            background: #a92620;
+            transform: translateY(-2px);
+        }
+
+        /* 5. POPUP BẢNG THÔNG SỐ (MODAL) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 550px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .close-btn:hover { 
+            color: #d0342c; 
+        }
+
+        #modal-title {
+            font-size: 1.2rem;
+            color: #d0342c;
+            margin-top: 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .spec-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+        }
+
+        .spec-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .spec-table td:first-child {
+            color: #333;
+            width: 45%;
+        }
+    </style>
 </head>
 <body>
 
     <div class="container">
-        <div id="product-list">
+        <h1 class="page-title">DANH SÁCH MÔ TÔ PHÂN KHỐI LỚN</h1>
+        <div id="product-list"></div>
+    </div>
+
+    <!-- POPUP BẢNG THÔNG SỐ XE -->
+    <div id="spec-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Tên Xe</h2>
+            <div id="modal-body"></div>
         </div>
     </div>
+
+<script>
+// 1. DANH SÁCH SẢN PHẨM & THÔNG SỐ
+const products = [
+    {
+        id: 1,
+        nameProduct: "KAWASAKI NINJA H2R",
+        price: "1,8 Tỷ VND",
+        description: "Kawasaki Ninja H2R là mẫu siêu mô tô chuyên dụng dành cho đường đua với sức mạnh vượt trội.",
+        Image: "../assets/images/h2r.jfif",
+        specs: {
+            "Động cơ": "Supercharged 998cc, 4 xy-lanh thẳng hàng",
+            "Công suất cực đại": "310 mã lực @ 14,000 vòng/phút",
+            "Mô-men xoắn": "165 Nm @ 12,500 vòng/phút",
+            "Trọng lượng": "213 kg",
+            "Dung tích bình xăng": "17 Lít",
+            "Chiều cao yên": "830 mm"
+        }
+    },
+    {
+        id: 2,
+        nameProduct: "HONDA CBR1000RR",
+        price: "1,05 Tỷ VND",
+        description: "Honda CBR1000 (Fireblade) là dòng siêu mô tô thể thao mang lại cảm giác lái thuần chất.",
+        Image: "../assets/images/honda.jpg",
+        specs: {
+            "Động cơ": "999cc, 4 xy-lanh thẳng hàng",
+            "Công suất cực đại": "214 mã lực @ 14,500 vòng/phút",
+            "Mô-men xoắn": "113 Nm @ 12,500 vòng/phút",
+            "Trọng lượng": "202 kg",
+            "Dung tích bình xăng": "16.1 Lít",
+            "Chiều cao yên": "831 mm"
+        }
+    },
+    {
+        id: 3,
+        nameProduct: "HONDA CBR650R",
+        price: "365 Triệu VND",
+        description: "Honda CBR650R là dòng mô tô thể thao phân khối lớn hạng trung được rất nhiều người ưa chuộng.",
+        Image: "../assets/images/cbr650rr.jpg",
+        specs: {
+            "Động cơ": "649cc, 4 xy-lanh thẳng hàng DOHC",
+            "Công suất cực đại": "94 mã lực @ 12,000 vòng/phút",
+            "Mô-men xoắn": "63 Nm @ 9,500 vòng/phút",
+            "Trọng lượng": "207 kg",
+            "Dung tích bình xăng": "15.4 Lít",
+            "Chiều cao yên": "810 mm"
+        }
+    },
+    {
+        id: 4,
+        nameProduct: "KAWASAKI ZX10R",
+        price: "749 Triệu VND",
+        description: "Kawasaki Ninja ZX-10R là dòng mô tô thể thao phân khối lớn Superbike đầy uy lực.",
+        Image: "../assets/images/zx10r.jpg",
+        specs: {
+            "Động cơ": "998cc, 4 xy-lanh thẳng hàng",
+            "Công suất cực đại": "203 mã lực @ 13,200 vòng/phút",
+            "Mô-men xoắn": "114.9 Nm @ 11,400 vòng/phút",
+            "Trọng lượng": "209 kg",
+            "Dung tích bình xăng": "17 Lít",
+            "Chiều cao yên": "835 mm"
+        }
+    },
+    {
+        id: 5,
+        nameProduct: "DUCATI SUPERA V4S",
+        price: "5,9 Tỷ VND",
+        description: "Ducati Panigale V4 S là dòng siêu mô tô thương mại đỉnh cao thừa hưởng công nghệ đua Moto GP.",
+        Image: "../assets/images/ducati.jpg",
+        specs: {
+            "Động cơ": "Desmosedici Stradale V4 1,103cc",
+            "Công suất cực đại": "215.5 mã lực @ 13,000 vòng/phút",
+            "Mô-men xoắn": "123.6 Nm @ 9,500 vòng/phút",
+            "Trọng lượng khô": "174 kg (Ướt 195 kg)",
+            "Dung tích bình xăng": "17 Lít",
+            "Chiều cao yên": "850 mm"
+        }
+    },
+    {
+        id: 6,
+        nameProduct: "SUZUKI GSX-S1000",
+        price: "209kg",
+        description: "Suzuki GSX-S1000 là mẫu naked-bike nổi bật với khối động cơ 999cc và phanh Brembo cao cấp.",
+        Image: "../assets/images/suzuki.jpg",
+        specs: {
+            "Động cơ": "999cc, 4 xy-lanh thẳng hàng",
+            "Công suất cực đại": "152 mã lực @ 11,000 vòng/phút",
+            "Mô-men xoắn": "106 Nm @ 9,250 vòng/phút",
+            "Trọng lượng": "214 kg",
+            "Dung tích bình xăng": "19 Lít",
+            "Chiều cao yên": "810 mm"
+        }
+    }
+];
+
+// 2. IN DANH SÁCH RA GIAO DIỆN
+const listProducts = document.getElementById("product-list");
+
+products.forEach(product => {
+    const item = document.createElement("div");
+    item.setAttribute("class", "item");
+
+    // Khung chứa ảnh (Ở trên)
+    const containerImage = document.createElement("div");
+    containerImage.setAttribute("class", "image");
+
+    const img = document.createElement("img");
+    img.setAttribute("src", product.Image);
+    img.setAttribute("alt", product.nameProduct);
+    containerImage.appendChild(img);
+
+    // Khung chứa chữ (Ở dưới)
+    const containerInfo = document.createElement("div");
+    containerInfo.setAttribute("class", "info");
+
+    const nameProduct = document.createElement("p");
+    nameProduct.innerHTML = product.nameProduct;
+
+    const price = document.createElement("p");
+    price.innerHTML = "Trọng lượng: " + product.price;
+
+    const description = document.createElement("p");
+    description.innerHTML = product.description;
+
+    const btnDetail = document.createElement("button");
+    btnDetail.innerHTML = "Xem thông số chi tiết";
+    btnDetail.setAttribute("class", "btn-detail");
+    btnDetail.onclick = () => showSpecs(product.id);
+
+    containerInfo.appendChild(nameProduct);
+    containerInfo.appendChild(price);
+    containerInfo.appendChild(description);
+    containerInfo.appendChild(btnDetail);
+
+    // Đưa ảnh vào trước, chữ vào sau
+    item.appendChild(containerImage);
+    item.appendChild(containerInfo);
+
+    listProducts.appendChild(item);
+});
+
+// 3. BẬT POPUP XEM THÔNG SỐ
+function showSpecs(id) {
+    const product = products.find(p => p.id === id);
+    if (!product) return;
+
+    document.getElementById("modal-title").innerHTML = "THÔNG SỐ KỸ THUẬT: " + product.nameProduct;
+
+    let tableHTML = `<table class="spec-table">`;
+    for (const [key, value] of Object.entries(product.specs)) {
+        tableHTML += `
+            <tr>
+                <td><strong>${key}</strong></td>
+                <td>${value}</td>
+            </tr>
+        `;
+    }
+    tableHTML += `</table>`;
+
+    document.getElementById("modal-body").innerHTML = tableHTML;
+    document.getElementById("spec-modal").style.display = "flex";
+}
+
+// 4. ĐÓNG POPUP
+function closeModal() {
+    document.getElementById("spec-modal").style.display = "none";
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById("spec-modal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 
 </body>
 </html>
